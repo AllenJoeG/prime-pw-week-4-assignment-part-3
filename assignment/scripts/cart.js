@@ -26,9 +26,9 @@ function addItem(item){
     return true;
   }
 }
-// Required feature
-function listItems(array){
-  for (let item of array){
+// Required feature.
+function listItems(){
+  for (let item of basket){
     console.log(item);
   }
 }
@@ -37,9 +37,10 @@ function empty(){
   basket = [];
   return console.log('You have emptied your basket.')
 }
-//Stretch goal #4
+//Stretch goal #4 Need to add conditional so only splices when the string is there.
 function removeItem(itemStr){
-  let removedItem = basket.indexOf(itemStr);
+  let index = basket.indexOf(itemStr);
+  let removedItem = basket[index];
   basket.splice(basket.indexOf(itemStr), 1);
   return removedItem || null;
 }
@@ -49,12 +50,20 @@ addItem('drink');
 addItem('condiments');
 addItem('impulse buy');
 addItem('protection plan for food');
-console.log("TEST listItems(basket):");
+console.log("TESTing listItems(basket):");
 listItems(basket);
 
+console.log("TESTing 'removeItem('condiments')':", removeItem('condiments'));
+console.log("TESTing 'removeItem('SOUP')':", removeItem('SOUP'));
+console.log(basket);
+//Refilling basket  to test overfill attempts
+addItem('single banana');
+addItem('single banana');
+//Testing overfill attempts
 console.log('TESTing addItem() on a 6th item:');
 addItem('single banana');
 console.log("TESTing addItem() within this console.log on a 6th item:", addItem('single banana'));
+
 
 console.log('TESTing empty()');
 empty();
