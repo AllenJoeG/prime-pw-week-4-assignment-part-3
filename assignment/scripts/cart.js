@@ -7,7 +7,7 @@ let basket = [];
 // Stretch #1
 const maxItems = 5;
 
-// Stretch goal #2
+// Stretch goal #2.
 function isFull(){
   if (basket.length < maxItems){
     return false;
@@ -18,17 +18,17 @@ function isFull(){
 // Required feature and Stretch goal #3
 function addItem(item){
   if (isFull() === true){
-    console.log('Item cannot be added, basket is full.');
+    console.log('Item cannot be added, basket is full. Returning false.');
     return false
   } else {
     basket.push(item);
-    console.log(`${item} successfully added to basket.`)
+    console.log(`${item} successfully added to basket. Returning true`)
     return true;
   }
 }
 // Required feature
 function listItems(array){
-  for (let item in array){
+  for (let item of array){
     console.log(item);
   }
 }
@@ -43,3 +43,19 @@ function removeItem(itemStr){
   basket.splice(basket.indexOf(itemStr), 1);
   return removedItem || null;
 }
+// Let the testing begin.
+addItem('food');
+addItem('drink');
+addItem('condiments');
+addItem('impulse buy');
+addItem('protection plan for food');
+console.log("TEST listItems(basket):");
+listItems(basket);
+
+console.log('TESTing addItem() on a 6th item:');
+addItem('single banana');
+console.log("TESTing addItem() within this console.log on a 6th item:", addItem('single banana'));
+
+console.log('TESTing empty()');
+empty();
+console.log('Logging basket:', basket);
